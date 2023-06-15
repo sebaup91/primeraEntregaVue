@@ -1,24 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <NavbarComponent :carrito="carrito" @carrito-actualizado="actualizarCarrito"></NavbarComponent>
+    <MainComponent :carrito="carrito" @carrito-actualizado="actualizarCarrito"></MainComponent>
+    <FooterComponent mensaje="@ Sebastian Perez 2023"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavbarComponent from './components/NavbarComponent.vue';
+import MainComponent from './components/MainComponent.vue';
+import FooterComponent from './components/FooterComponent.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    NavbarComponent,
+    MainComponent,
+    FooterComponent
+  },
+  data() {
+    return {
+      carrito: []
+    }
+  },
+  methods: {
+    actualizarCarrito(nuevoCarrito) {
+      this.carrito = nuevoCarrito;
+    }
   }
 }
 </script>
 
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
